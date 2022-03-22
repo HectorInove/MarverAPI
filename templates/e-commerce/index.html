@@ -1,33 +1,32 @@
 {% extends "e-commerce/base.html" %}
-{% load static %}
-{% block content %}
+{%load static%}
+{% block body %}
 
-  <div class="row mt-5">
+  <div class="row">
     <div class="col-md-5">
      
       <div class="card card-body">
-        <form action="#" method="POST">
-            {% csrf_token %}
+        <form action="" method="POST">
+          {% csrf_token %}
           <div class="form-group">
-            <input type="text" class="form-control" name="Title" placeholder="Title">
+            <input type="text" class="form-control" name="title" placeholder="Title">
           </div>
           <div class="form-group">
             <input type="text" class="form-control" name="description" placeholder="Description">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="price" placeholder="Price">
+            <input type="number" class="form-control" name="price" placeholder="Price">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="stock_qty" placeholder="Stock">
+            <input type="number" class="form-control" name="stock" placeholder="Stcok">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="picture" placeholder="Image">
-          </div><br>
-          <button class="btn btn-primary btn-block">
-            Guardar
+            <input type="url" class="form-control" name="picture" placeholder="Picture">
+          </div>
+          <button class="btn btn-primary btn-block btn-sm">
+            Save
           </button><br/>
         </form>
-   
       </div>
     </div>
     <div class="col-md-7">
@@ -39,8 +38,8 @@
             <td>Description</td>
             <td>Price</td>
             <td>Stock</td>
-            <td>Image</td>
-            <td>ACCIONES DISPONIBLES</td>
+            <td>Picture</td>
+            <td>OPTIONS</td>
           </tr>
         </thead>
         <tbody>
@@ -53,11 +52,11 @@
             <td>{{comic.stock_qty}}</td>
             <td>{{comic.picture}}</td>
             <td>
-              <a href="" class="btn btn-warning btn-sm">editar</a>
-              <a href="" class="btn btn-danger btn-eliminar btn-sm">eliminar</a>
+              <a href="" class="btn btn-warning btn-sm">Edit</a>
+              <a href="" class="btn btn-danger btn-eliminar btn-sm">Delete</a>
             </td>
           </tr>
-          {%endfor%}
+          {% endfor %}
         </tbody>
       </table>
     </div>

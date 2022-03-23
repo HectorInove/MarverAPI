@@ -1,7 +1,9 @@
 from django.views.generic import TemplateView
 from . models import Comic
 
-    
+
+'''Todo es parcial'''
+  
 class IndexView(TemplateView):
     template_name = 'e-commerce/index.html'
     #retorna tabla con comics disponibles

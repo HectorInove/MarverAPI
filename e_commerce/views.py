@@ -3,17 +3,25 @@ from . models import Comic
 
 
 '''Todo es parcial'''
-  
-class IndexView(TemplateView):
-    template_name = 'e-commerce/index.html'
-    #retorna tabla con comics disponibles
-    def get_context_data(self,*args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['comic'] = Comic.objects.all()
-        return context
+
+class PurchaseView(TemplateView):
+    template_name = 'e-commerce/purchased.html'
    
-  
-        
+   
+class FormView(TemplateView):
+    template_name = 'e-commerce/form.html'
+    
+    
+class TableView(TemplateView):
+    template_name = 'e-commerce/tabla.html'
+    
+
+class CartView(TemplateView):
+    template_name = 'e-commerce/cart.html'
+    
+    
+class FavoriteView(TemplateView):
+    template_name = 'e-commerce/favorites.html'
         
     
     

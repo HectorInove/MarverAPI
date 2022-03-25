@@ -22,6 +22,8 @@ class CartView(TemplateView):
     
 class FavoriteView(TemplateView):
     template_name = 'e-commerce/favorites.html'
-        
+    
+class EditView(TemplateView):
+    template_name = 'e-commerce/edit.html'       
     
     

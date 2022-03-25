@@ -8,6 +8,7 @@ urlpatterns = [
     path('table', TableView.as_view(), name='table'),
     path('cart', CartView.as_view(), name='cart'),
     path('favorites', FavoriteView.as_view(), name='favorites'),
+    path('edit', EditView.as_view(), name='edit'),
     
     
 ]

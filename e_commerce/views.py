@@ -4,6 +4,9 @@ from . models import Comic
 
 '''Todo es parcial'''
 
+class LoginView(TemplateView):
+    template_name = 'e-commerce/login.html'
+
 class PurchaseView(TemplateView):
     template_name = 'e-commerce/purchased.html'
    

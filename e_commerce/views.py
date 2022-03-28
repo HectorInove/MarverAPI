@@ -30,16 +30,18 @@ class FormView(TemplateView):
 class TableView(TemplateView):
     template_name = 'e-commerce/tabla.html'
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comic'] = Comic.objects.all()
+        return context
+    
 
 class CartView(TemplateView):
     template_name = 'e-commerce/cart.html'
     
     
 class FavoriteView(TemplateView):
-    template_name = 'e-commerce/favorites.html'
-    
-class EditView(TemplateView):
-    template_name = 'e-commerce/edit.html'  
+    template_name = 'e-commerce/favorites.html' 
 
 
 class UserDataView(TemplateView):

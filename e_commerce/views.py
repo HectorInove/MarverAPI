@@ -45,8 +45,10 @@ class FavoriteView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['favoritos'] = WishList.objects.count()
-        context['comic'] = Comic.objects.count()
+        
+        if self.request.user.is_authenticated:
+            user_id= self.request.user.id
+            context['favoritos'] = WishList.objects.filter(user_id=user_id).count()
         
         return context
 

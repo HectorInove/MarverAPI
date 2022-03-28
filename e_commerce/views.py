@@ -1,11 +1,21 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
+from django.contrib.auth.views import LoginView, LogoutView
 from . models import Comic
+from . forms import LoginForm
 
 
 '''Todo es parcial'''
 
-class LoginView(TemplateView):
+class LoginFormView(LoginView):
     template_name = 'e-commerce/login.html'
+    
+    def get_success_url(self):
+        return 'purchased'
+
+
+class LogoutView(RedirectView):
+    pattern_name = 'login'
+
 
 class PurchaseView(TemplateView):
     template_name = 'e-commerce/purchased.html'

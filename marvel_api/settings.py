@@ -28,9 +28,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'drf_yasg',
+    'crispy_forms',
     
     'e_commerce',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -132,3 +134,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AMARILLO = "\033[;33m"
 CIAN = "\033[;36m"
 VERDE = "\033[;32m"
+
+LOGIN_REDIRECT_URL = '/e-commerce/purchased'
+LOGOUT_REDIRECT_URL = '/e-commerce/login/'
+
+

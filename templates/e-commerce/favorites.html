@@ -8,24 +8,24 @@
           <div class="widget-user-image">
             <img
               class="img-circle elevation-2"
-              src="{% static 'dist/img/user7-128x128.jpg'%}"
+              src="{% static 'dist/img/avatar5.png' %}"
               alt="User Avatar"
             />
           </div>
 
-          <h3 class="widget-user-username">Nadia Carmichael</h3>
+          <h3 class="widget-user-username">{{user.username}}</h3>
           <h5 class="widget-user-desc">Lista de favoritos</h5>
         </div>
         <div class="card-footer p-0">
           <ul class="nav flex-column">
             <li class="nav-item">
               <a href="#" class="nav-link">
-                Favoritos <span class="float-right badge bg-primary">31</span>
+                Cantidad de Favoritos <span class="float-right badge bg-primary">{{favoritos}}</span>
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                Comics <span class="float-right badge bg-info">5</span>
+                Comics Totales <span class="float-right badge bg-info">{{comic}}</span>
               </a>
             </li>
           </ul>

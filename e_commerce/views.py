@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.views.generic import RedirectView, TemplateView
 
 from .forms import LoginForm
-from .models import Comic
+from .models import Comic, WishList
 
 '''Todo es parcial'''
 
@@ -42,6 +42,13 @@ class CartView(TemplateView):
     
 class FavoriteView(TemplateView):
     template_name = 'e-commerce/favorites.html' 
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['favoritos'] = WishList.objects.count()
+        context['comic'] = Comic.objects.count()
+        
+        return context
 
 
 class UserDataView(TemplateView):

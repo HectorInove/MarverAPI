@@ -1,0 +1,17 @@
+{% extends 'e-commerce/index.html' %}
+{% load static %}
+
+{% block body %}
+
+<section class="content">
+    <ul class="list-group">
+      {% for k, v in user_data.items %}
+
+      
+        <li class="list-group-item list-group-item-secondary"><b>{{k}}:</b> {{v}}</li>
+       
+        {% endfor %}
+      </ul>
+</section>
+
+{% endblock %}

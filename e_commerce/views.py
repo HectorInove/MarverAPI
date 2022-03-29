@@ -21,10 +21,12 @@ class LogoutView(RedirectView):
 
 class PurchaseView(TemplateView):
     template_name = 'e-commerce/purchased.html'
-   
-   
-class FormView(TemplateView):
-    template_name = 'e-commerce/form.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comic'] = Comic.objects.all()
+        
+        return context
     
     
 class TableView(TemplateView):

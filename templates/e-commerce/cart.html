@@ -2,6 +2,11 @@
 
 <section class="content">
   <div class="col-12 table-responsive">
+    <div class="card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Tu Carrito de Compras {{user.username|upper}}</h3>
+      </div>
+    </div>
     <table class="table table-striped">
       {% for c in comic %}
       <thead>

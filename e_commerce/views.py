@@ -85,3 +85,9 @@ class UserDataView(TemplateView):
     
 class SaludoView(TemplateView):
     template_name = 'e-commerce/saludo.html'
+    
+class ContacView(TemplateView):
+    template_name = 'e-commerce/contacto.html'
+    
+class RecivedView(TemplateView):
+    template_name = 'e-commerce/mail.html'

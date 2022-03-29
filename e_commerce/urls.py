@@ -11,6 +11,8 @@ urlpatterns = [
     path('favorites', FavoriteView.as_view(), name='favorites'),
     path('user-data', UserDataView.as_view(), name='user-data'),
     path('saludo', SaludoView.as_view(), name='saludo'),
+    path('contacto', ContacView.as_view(), name='contacto'),
+    path('mail', RecivedView.as_view(), name='mail'),
     
     
 ]

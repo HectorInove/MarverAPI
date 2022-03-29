@@ -3,27 +3,27 @@
 <section class="content">
   <div class="col-12 table-responsive">
     <table class="table table-striped">
+      {% for c in comic %}
       <thead>
         <tr>
           <th>Cantidad</th>
           <th>Comic</th>
-          <th>Fecha</th>
           <th>Descripcion</th>
           <th>Subtotal</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Call of Duty</td>
-          <td>24/03/22</td>
-          <td>Comic de Marvel</td>
-          <td>$64.50</td>
+          <td>{{cart}}</td>
+          <td>{{c.title}}</td>
+          <td>{{c.description}}</td>
+          <td>{{c.price}}</td>
         </tr>
       </tbody>
+      {% endfor %}
     </table>
   </div>
-
+    <br>
   <div class="row">
     <div class="col-6">
       <p class="lead">Metodos de Pago:</p>
@@ -38,45 +38,13 @@
       />
       <img src="{% static 'dist/img/credit/paypal2.png'%}" alt="Paypal" />
     </div>
-
-    <div class="col-6">
-      <p class="lead">Fecha de Compra 24/03/2022</p>
-      <div class="table-responsive">
-        <table class="table">
-          <tbody>
-            <tr>
-              <th style="width: 50%">Subtotal:</th>
-              <td>$250.30</td>
-            </tr>
-            <tr>
-              <th>Iva (9.3%)</th>
-              <td>$10.34</td>
-            </tr>
-            <tr>
-              <th>Extras:</th>
-              <td>$5.80</td>
-            </tr>
-            <tr>
-              <th>Total:</th>
-              <td>$265.24</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+     
   </div>
   <div class="row no-print">
     <div class="col-12">
-      <a
-        href="invoice-print.html"
-        rel="noopener"
-        target="_blank"
-        class="btn btn-default"
-        ><i class="fas fa-print"></i> Imprimir</a
-      >
-      <button type="button" class="btn btn-success float-right">
+      <a href="{% url 'saludo' %}" type="button" class="btn btn-success float-right mr-5">
         <i class="far fa-credit-card"></i> Confirmar Pago
-      </button>
+      </a>
     </div>
   </div>
 </section>

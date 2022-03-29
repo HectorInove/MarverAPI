@@ -39,6 +39,20 @@ class TableView(TemplateView):
 class CartView(TemplateView):
     template_name = 'e-commerce/cart.html'
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        if self.request.user.is_authenticated:
+            user_id= self.request.user.id
+            context['cart'] = WishList.objects.filter(user_id=user_id, cart=True).count()
+            data = WishList.objects.filter(user_id=user_id, cart=True)
+            id= [id[0] for id in data.values_list()]
+            comic = Comic.objects.filter(id__in=id)
+            context['comic'] = comic.values()
+            
+        
+        return context
+    
     
 class FavoriteView(TemplateView):
     template_name = 'e-commerce/favorites.html' 
@@ -67,4 +81,5 @@ class UserDataView(TemplateView):
         
         return context    
     
-    
+class SaludoView(TemplateView):
+    template_name = 'e-commerce/saludo.html'

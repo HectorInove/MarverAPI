@@ -3,10 +3,23 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.views.generic import RedirectView, TemplateView
 
-from .forms import LoginForm
+from .forms import LoginForm, UserForm
 from .models import Comic, WishList
 
+from django.shortcuts import render, redirect
+
 '''Todo es parcial'''
+
+def register(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/e-commerce/login')
+    else:
+        form = UserForm()
+    return render(request, 'e-commerce/register.html', {'form': form})
+
 
 class LoginFormView(LoginView):
     template_name = 'e-commerce/login.html'

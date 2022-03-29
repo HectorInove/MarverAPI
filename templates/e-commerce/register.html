@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Log in</title>
+    <title>Registro</title>
 
     <link
       rel="stylesheet"
@@ -31,21 +31,16 @@
 
       <div class="card">
         <div class="card-body login-card-body">
-          <p class="login-box-msg">Iniciar Sesion o Registrarse</p>
+          <p class="login-box-msg">Registro de nuevo usuario</p>
 
           <form action="#" method="post">
             {% csrf_token %} {{ form | crispy }}
             <div class="row">
-              <div class="col-8">
-                <div class="icheck-primary">
-                  <input type="checkbox" id="remember" />
-                  <label for="remember"> Recordarme </label>
-                </div>
-              </div>
+              <div class="col-8"></div>
 
               <div class="col-4">
                 <button type="submit" class="btn btn-primary btn-block btn-sm">
-                  Iniciar Sesion
+                  Registrarse
                 </button>
               </div>
             </div>
@@ -60,12 +55,8 @@
               <i class="fab fa-google-plus mr-2"></i> Inicia Sesion con Google
             </a>
           </div>
-
           <p class="mb-1">
-            <a href="#">Olvidaste la contraseña?</a>
-          </p>
-          <p class="mb-0">
-            <a href="{% url 'register' %}" class="text-center">Registrarse</a>
+            <a href="{% url 'login' %}">Ya tienes una cuenta? inicia sesion</a>
           </p>
         </div>
       </div>

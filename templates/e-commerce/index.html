@@ -114,8 +114,24 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{% url 'user-update' %}" class="nav-link">
+              <i class="nav-icon fas fa-solid fa-pen"></i>
+              <p>
+                Editar Perfil
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'pass-update' %}" class="nav-link">
+              <i class="nav-icon fas fa-solid fa-lock-open"></i>
+              <p>
+                Editar Password
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{% url 'contacto' %}" class="nav-link">
-              <i class="nav-icon fas fa-solid fa-envelope-open-text"></i>
+              <i class="nav-icon fas fa-regular fa-envelope-open-text"></i>
               <p>
                 Contacta con Nosotros
               </p>

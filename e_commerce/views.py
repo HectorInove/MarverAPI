@@ -1,15 +1,18 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 from django.views.generic import RedirectView, TemplateView
 
-from .forms import LoginForm, UserForm
+from .forms import LoginForm, UserForm, UserUpdateForm
 from .models import Comic, WishList
 
+
+from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
 
 '''Todo es parcial'''
-
+#Registro de usuario
 def register(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
@@ -20,6 +23,27 @@ def register(request):
         form = UserForm()
     return render(request, 'e-commerce/register.html', {'form': form})
 
+#Edicion de perfil d eusuario
+def update(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('user-data')
+    else:
+        form = UserUpdateForm(instance=request.user)
+        return render(request, 'e-commerce/userupdate.html', {'form': form})
+
+#Edicion de password de usuario     
+def passupdate(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('login')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'e-commerce/userchangepass.html', {'form': form})  
 
 class LoginFormView(LoginView):
     template_name = 'e-commerce/login.html'

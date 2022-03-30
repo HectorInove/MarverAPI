@@ -4,7 +4,9 @@
   <div class="col-12 table-responsive">
     <div class="card-primary">
       <div class="card-header">
-        <h3 class="card-title">Tu Carrito de Compras {{user.username|upper}}</h3>
+        <h3 class="card-title">
+          Tu Carrito de Compras {{user.username|upper}}
+        </h3>
       </div>
     </div>
     <table class="table table-striped">
@@ -28,7 +30,7 @@
       {% endfor %}
     </table>
   </div>
-    <br>
+  <br />
   <div class="row">
     <div class="col-6">
       <p class="lead">Metodos de Pago:</p>
@@ -43,11 +45,30 @@
       />
       <img src="{% static 'dist/img/credit/paypal2.png'%}" alt="Paypal" />
     </div>
-     
+  </div>
+  <div class="row">
+    <div class="col-6"></div>
+
+    <div class="col-6">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Total a pagar:</th>
+              <td>{{total_price}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <div class="row no-print">
     <div class="col-12">
-      <a href="{% url 'saludo' %}" type="button" class="btn btn-success float-right mr-5">
+      <a
+        href="{% url 'saludo' %}"
+        type="button"
+        class="btn btn-success float-right mr-5"
+      >
         <i class="far fa-credit-card"></i> Confirmar Pago
       </a>
     </div>

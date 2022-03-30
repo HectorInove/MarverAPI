@@ -88,7 +88,8 @@ class CartView(TemplateView):
             id= [id[0] for id in data.values_list()]
             comic = Comic.objects.filter(id__in=id)
             context['comic'] = comic.values()
-            
+            id= [id.comic_id for id in data]
+            context['total_price'] = round((sum([float(comic.price) for comic in id])), 2)
         
         return context
     

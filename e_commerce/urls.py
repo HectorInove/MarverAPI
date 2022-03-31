@@ -17,6 +17,7 @@ urlpatterns = [
     path('mail', RecivedView.as_view(), name='mail'),
     path('user-update', update, name='user-update'),
     path('pass-update', passupdate, name='pass-update'),
+    path('galeria', GaleriaView.as_view(), name='galeria'), 
     
     
 ]

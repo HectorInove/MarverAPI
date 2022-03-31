@@ -129,3 +129,11 @@ class ContacView(TemplateView):
     
 class RecivedView(TemplateView):
     template_name = 'e-commerce/mail.html'
+    
+class GaleriaView(TemplateView):
+    template_name = 'e-commerce/galeria.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comic'] = Comic.objects.all()
+        return context

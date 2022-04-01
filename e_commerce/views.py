@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
@@ -54,6 +54,10 @@ class LoginFormView(LoginView):
 
 class LogoutView(RedirectView):
     pattern_name = 'login'
+    
+    def dispatch(self, request, *args, **kwargs):
+        logout(request)
+        return super().dispatch(request, *args, **kwargs)
 
 
 class PurchaseView(TemplateView):

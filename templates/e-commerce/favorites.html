@@ -33,6 +33,34 @@
       </div>
     </div>
 </div>
+
+<div class="col-12 table-responsive">
+  <div class="card-warning">
+    <div class="card-header">
+      <h3 class="card-title">
+        Tu detalle de <b>Favoritos</b>
+      </h3>
+    </div>
+  </div>
+  <table class="table table-striped">
+   
+    <thead>
+      <tr>
+        <th>Comic</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    {% for c in comic %}
+    <tbody>
+      <tr>
+        <td>{{c.title}}</td>
+        <td>{{c.description}}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
 </section>
 
 {% endblock %}

@@ -103,7 +103,11 @@ class FavoriteView(TemplateView):
         if self.request.user.is_authenticated:
             user_id= self.request.user.id
             context['favoritos'] = WishList.objects.filter(user_id=user_id).count()
-        
+            
+            data = WishList.objects.filter(user_id=user_id, favorite=True)
+            id= [id[0] for id in data.values_list()]
+            comic = Comic.objects.filter(id__in=id)
+            context['comic'] = comic.values()
         return context
 
 

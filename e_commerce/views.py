@@ -6,7 +6,7 @@ from django.views.generic import RedirectView, TemplateView
 
 from .forms import LoginForm, UserForm, UserUpdateForm
 from .models import Comic, WishList
-
+from datetime import datetime
 
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
@@ -131,6 +131,27 @@ class UserDataView(TemplateView):
     
 class SaludoView(TemplateView):
     template_name = 'e-commerce/saludo.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        user = User.objects.get(username=self.request.user)
+        data = WishList.objects.filter(user_id=user, cart=True, wished_qty__gt=0)
+        comics = [obj.comic_id for obj in data]
+        context['comics'] = comics
+        
+        if data:
+            time = datetime.now()
+            context['date'] = time.strftime('%Y-%m-%d')
+            
+        for (comic, wish_obj) in zip(comics, data):
+            comic.stock_qty = comic.stock_qty - wish_obj.wished_qty
+            comic.save()
+            wish_obj.buied_qty += wish_obj.wished_qty
+            wish_obj.wished_qty = 0
+            wish_obj.cart = False
+            wish_obj.save()
+            
+        return context
     
 class ContacView(TemplateView):
     template_name = 'e-commerce/contacto.html'

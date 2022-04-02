@@ -21,6 +21,7 @@
           </div>
         </div>
         <table class="table table-striped">
+          {% for c in comics %}
           <thead>
             <tr>
               <th>Comic</th>
@@ -30,11 +31,12 @@
           </thead>
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{c.title}}</td>
+              <td>{{c.description}}</td>
+              <td>{{date}}</td>
             </tr>
           </tbody>
+          {% endfor %}
         </table>
       </div>
 </section>

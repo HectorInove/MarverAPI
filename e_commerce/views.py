@@ -4,8 +4,8 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import RedirectView, TemplateView
 
-from .forms import LoginForm, UserForm, UserUpdateForm, UserDetailUpdateForm
-from .models import Comic, WishList, UserDetail
+from .forms import LoginForm, UserForm, UserUpdateForm, ProfileUpdateForm
+from .models import Comic, WishList, Profile
 from datetime import datetime
 
 from django.contrib.auth.forms import PasswordChangeForm
@@ -23,18 +23,18 @@ def register(request):
         form = UserForm()
     return render(request, 'e-commerce/register.html', {'form': form})
 
-#Edicion de perfil d eusuario
-def update(request):
+#Edicion de perfil de usuario utilizando dos form en una sola vista
+def profile(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = UserDetailUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
             return redirect('user-data')
     else:
         u_form = UserUpdateForm(instance=request.user)
-        p_form = UserDetailUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
         return render(request, 'e-commerce/userupdate.html', {'u_form': u_form, 'p_form': p_form})
 
 #Edicion de password de usuario     
@@ -129,7 +129,7 @@ class UserDataView(TemplateView):
             queryset = User.objects.filter(id=id_user)
             user_data = queryset.values().first()
             context['user_data'] = user_data
-            query = UserDetail.objects.filter(id=id_user)
+            query = Profile.objects.filter(id=id_user)
             extradata = query.values().first()
             context['extradata'] = extradata
         

@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from e_commerce.models import Comic, WishList, UserDetail
+from e_commerce.models import Comic, WishList, Profile
 
 admin.site.register(Comic)
-admin.site.register(UserDetail)
+admin.site.register(Profile)
 
 class ComicAdmin(admin.ModelAdmin):
     list_display = ('marvel_id', 'title', 'stock_qty', 'price')

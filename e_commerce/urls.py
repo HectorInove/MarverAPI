@@ -15,7 +15,7 @@ urlpatterns = [
     path('saludo', SaludoView.as_view(), name='saludo'),
     path('contacto', ContacView.as_view(), name='contacto'),
     path('mail', RecivedView.as_view(), name='mail'),
-    path('user-update', update, name='user-update'),
+    path('user-update', profile, name='user-update'),
     path('pass-update', passupdate, name='pass-update'),
     path('galeria', GaleriaView.as_view(), name='galeria'), 
     

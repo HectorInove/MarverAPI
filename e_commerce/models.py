@@ -42,9 +42,8 @@ class WishList(models.Model):
         return f'{self.id}'
 
 
-class UserDetail(models.Model):
-    id = models.BigAutoField(db_column='ID', primary_key=True)
-    user = models.ForeignKey(User, verbose_name='User', on_delete=models.DO_NOTHING, default=1, blank=True)
+class Profile(models.Model):
+    user = models.OneToOneField(User, verbose_name='User', on_delete=models.DO_NOTHING, default=1, blank=True)
     country = models.CharField(verbose_name='Pais', max_length=100)
     state = models.CharField(verbose_name='Provincia/Estado', max_length=100)
     city = models.CharField(verbose_name='Ciudad', max_length=100, default='')
@@ -52,7 +51,7 @@ class UserDetail(models.Model):
     cell_phone_number = models.CharField(verbose_name='Numero de Tel', max_length=20)
 
     class Meta:
-        db_table = 'e_commerce_user_detail'
+        verbose_name = 'profile'
 
     def __str__(self):
         return f'{self.id}'

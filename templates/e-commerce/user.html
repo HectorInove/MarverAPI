@@ -17,6 +17,20 @@
        
         {% endfor %}
       </ul>
+       <br>
+      <div class="card-info">
+        <div class="card-header">
+          <h3 class="card-title">Datos Extra</h3>
+        </div>
+      </div>
+        <ul class="list-group">
+          {% for k, v in extradata.items %}
+    
+          
+            <li class="list-group-item list-group-item-dark"><b>{{k}}:</b> {{v}}</li>
+           
+            {% endfor %}
+          </ul>
 </section>
 
 {% endblock %}

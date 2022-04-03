@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import RedirectView, TemplateView, ListView
 
 from .forms import LoginForm, UserForm, UserUpdateForm, ProfileUpdateForm
 from .models import Comic, WishList, Profile
@@ -63,8 +63,10 @@ class LogoutView(RedirectView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class PurchaseView(TemplateView):
+class PurchaseView(ListView):
     template_name = 'e-commerce/purchased.html'
+    model = Comic
+    paginate_by = 2
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

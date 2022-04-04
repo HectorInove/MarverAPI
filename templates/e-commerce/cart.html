@@ -23,7 +23,11 @@
         <tr>
           <td>{{cart}}</td>
           <td>{{c.title}}</td>
+          {% if c.description %}
           <td>{{c.description}}</td>
+          {% else %}
+          <td>Descripcion no disponible</td>
+          {% endif %}
           <td>{{c.price}}</td>
         </tr>
       </tbody>

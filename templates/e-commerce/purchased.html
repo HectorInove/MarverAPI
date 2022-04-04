@@ -16,11 +16,15 @@
         </div>
         <div class="col-12 col-sm-6">
           <h3 class="my-3">{{comic.title}}</h3>
+          {% if comic.description %}
           <p>{{comic.description}}</p>
+          {% else %}
+          <p>Descripción no disponible</p>
+          {% endif %}
           <hr />
 
           <div class="bg-gray py-2 px-3 mt-4">
-            <h2 class="mb-0">USD$ {{c.price}}</h2>
+            <h2 class="mb-0">USD$ {{comic.price}}</h2>
             <h4 class="mt-0">
               <small>Stock disponible: {{comic.stock_qty}} </small>
             </h4>

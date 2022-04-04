@@ -54,7 +54,11 @@
     <tbody>
       <tr>
         <td>{{c.title}}</td>
+        {% if c.description %}
         <td>{{c.description}}</td>
+        {% else %}
+        <td>Descripción no disponible</td>
+        {% endif %}
       </tr>
     </tbody>
     {% endfor %}

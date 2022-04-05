@@ -1,0 +1,28 @@
+version: "3.3"
+# Este es un archivo de docker-compose.yml para configurar el uso de contenedores de software.
+
+services:
+
+  modulo_4:
+    # build es el lugar desde donde toma los archivos para generar la imagen.
+    build: .
+    # Imágen a utilizar:
+    image: modulo_4
+    # Nombre del container:
+    container_name: modulo_4b
+    # Comportamiento ante fallos y al iniciar el sistema:
+    restart: always
+    # Carpetas enlazadas:
+    volumes:
+      # Source code directory:
+      - type: bind
+        source: .
+        target: /opt/back_end
+    # Puertos enlazados:
+    ports:
+        - "8000:8000"
+    # Control de consola:
+    stdin_open: true
+    tty: true
+    
+    command: python marvel_api/manage.py runserver 0.0.0.0:8000
